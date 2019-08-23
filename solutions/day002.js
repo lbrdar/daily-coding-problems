@@ -11,6 +11,10 @@ const expect = require('../chai').expect;
  Follow-up: what if you can't use division?
  */
 function with_div(inputArr) {
+  if (!Array.isArray(inputArr)) {
+    throw new Error('Expected input to be an array');
+  }
+
   const masterProduct = inputArr.reduce((p, n) => p * n, 1);
 
   return inputArr.map(n => masterProduct / n);
@@ -21,6 +25,10 @@ expect(with_div([3, 2, 1])).to.eql([2, 3, 6]);
 
 
 function without_div(inputArr) {
+  if (!Array.isArray(inputArr)) {
+    throw new Error('Expected input to be an array');
+  }
+
   // element at index i is the product of all the numbers in the original array before this index
   const products_from_start = [];
   // element at index i is the product of all the numbers in the original array after this index
